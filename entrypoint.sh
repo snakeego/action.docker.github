@@ -44,7 +44,7 @@ DOCKER_TAG="${BASE_NAME}:latest"
 if [ "${INPUT_TAG}" ]; then DOCKER_TAG="${BASE_NAME}:${INPUT_TAG}"; fi
 
 # Build The Container
-docker build $BUILDPARAMS -t ${DOCKER_TAG} -f ${INPUT_DOCKERFILE_PATH} --rm --no-cache --squash ${INPUT_BUILD_CONTEXT}
+docker build $BUILDPARAMS -t ${DOCKER_TAG} -f ${INPUT_DOCKERFILE_PATH} --rm --no-cache --pull ${INPUT_BUILD_CONTEXT}
 docker push ${DOCKER_TAG}
 
 echo "::set-output name=IMAGE_NAME::${DOCKER_TAG}"
